@@ -1,0 +1,10 @@
+.type-box {
+  color: #354069;
+  font-size: 12px;
+  width: 34px;
+  height: 24px;
+  display: inline-block;
+  text-align: center;
+  line-height: 24px;
+  font-weight: 700;
+}

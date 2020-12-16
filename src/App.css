@@ -1,39 +1,66 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+.users-list {
+  max-width: 1678px;
+  margin: auto;
+  margin-top: 207px;
+  margin-bottom: 207px;
+}
+.users-list .table {
+  color: #39628D;
+  overflow-x: auto;
+}
+.users-list .table tr:hover {
+  background: rgba(57,98,141,0.05);
+}
+.users-list .table th {
+  font-size: 12px;
+}
+.users-list .table td {
+  font-size: 14px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.users-list .table td, .users-list .table th {
+  border-top: 1px solid #E2E2E2;
+  vertical-align: middle;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
-}
-
-.App-header {
-  min-height: 100vh;
+.table-top {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 32px;
+  margin-bottom: 10px;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.table-top h2 {
+  color: #22242A;
+  font-size: 18px;
+  margin-left: 6%;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px)
-  }
-  100% {
-    transform: translateY(0px)
-  }
+.table-top p {
+  font-size: 12px;
+  color: #808080;
+  padding-right: 3.2%;
+}
+
+.table-top h2,
+.table-top p {
+  margin-bottom: 0;
+}
+
+.table-top .questionmark-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 24px;
+  position: relative;
+  bottom: 1.5px;
+}
+
+.users-list .table td:not(:nth-child(2)):hover {
+  text-shadow: 0 0 0.9px #333, 0 0 0.9px #333;
 }
