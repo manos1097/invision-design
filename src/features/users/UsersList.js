@@ -1,11 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { selectAllUsers } from './usersSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectAllUsers, selectAllUserIds } from './usersSlice'
 import { UserRow } from './UserRow'
 import { CheckBox } from '../ui/CheckBox/CheckBox'
+import { allCheckboxesChecked, allCheckboxesUnchecked } from '../users/tableSelectionsSlice'
 
 export const UsersList = () => {
+  const dispatch = useDispatch()
   const users = useSelector(selectAllUsers)
+  const allUserIds = useSelector(selectAllUserIds)
   
   let usersRowsMarkup
   if (users.users) {
@@ -14,16 +17,30 @@ export const UsersList = () => {
     ))
   }
 
+  let selectedCountMarkup
+  const selectedCount = useSelector(state => state.selections.ids).length
+  if (selectedCount) {
+    selectedCountMarkup = <p>{selectedCount} selected <img className="questionmark-icon" src="img/Questionmark.svg" alt="Hint icon"/></p>
+  }
+
+  const handleMainCheckboxToggle = (checked) => {
+    if (checked) {
+      dispatch(allCheckboxesChecked({ids: allUserIds}))
+    }else {
+      dispatch(allCheckboxesUnchecked({ids: allUserIds}))
+    }
+  }
+
   return (
     <section className="users-list">
       <div className="table-top">
         <h2>Users</h2>
-        <p>2 selected <img className="questionmark-icon" src="img/Questionmark.svg" alt="Hint icon"/></p>
+        {selectedCountMarkup}
       </div>
       <table className="table">
       <thead>
         <tr>
-          <th className="text-center" scope="col"><CheckBox /></th>
+          <th className="text-center" scope="col"><CheckBox changeCheckboxStatus={handleMainCheckboxToggle} /></th>
           <th scope="col">TYPE</th>
           <th scope="col">NAME</th>
           <th scope="col">EMAIL</th>

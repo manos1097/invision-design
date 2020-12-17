@@ -56,5 +56,10 @@ export const usersSlice = createSlice({
 export const { toggleStatus } = usersSlice.actions;
 
 export const selectAllUsers = state => state.users
+export const selectAllUserIds = state => {
+  let ids = []
+  state.users.users.forEach(user => ids.push(user.id))
+  return ids
+}
 
 export default usersSlice.reducer;
